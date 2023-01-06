@@ -13,7 +13,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 cnn.CreateTable<User>();
                 cnn.CreateTable<Product>();
                 return true;
@@ -26,7 +26,7 @@ namespace GreenGrocery.Models
 
         public User GetUserLoggedIn()
         {
-            var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+            var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
             return cnn.Table<User>().FirstOrDefault();
         }
 
@@ -34,7 +34,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 cnn.Insert(user);
                 return true;
             }
@@ -48,7 +48,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 cnn.DeleteAll<User>();
                 return true;
             }
@@ -62,7 +62,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 return cnn.Table<Product>().ToList();
                 
             }
@@ -76,7 +76,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 return cnn.Table<Product>().Where(product => product.Id == id).FirstOrDefault();
             }
             catch
@@ -90,7 +90,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 cnn.Delete(product);
                 return true;
             }
@@ -104,7 +104,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 cnn.Update(product);
                 return true;
             } catch
@@ -117,7 +117,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 cnn.Insert(product);
                 return true;
             }
@@ -141,7 +141,7 @@ namespace GreenGrocery.Models
         {
             try
             {
-                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "grocery_store.db"));
+                var cnn = new SQLiteConnection(System.IO.Path.Combine(path, "ecommerce_store.db"));
                 cnn.DeleteAll<Product>();
                 return true;
             }

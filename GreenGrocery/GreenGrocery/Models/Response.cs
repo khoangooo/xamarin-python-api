@@ -5,15 +5,15 @@ using Newtonsoft.Json;
 
 namespace GreenGrocery.Models
 {
-    public class Response
+    public class Response<T>
     {
         [JsonProperty("status")]
-        public int Status { get; set; }
+        public bool Status { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("data")]
-        public ResponseData Data { get; set; }
+        public T Data { get; set; }
     }
 }

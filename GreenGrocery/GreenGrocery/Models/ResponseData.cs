@@ -13,10 +13,10 @@ namespace GreenGrocery.Models
         [JsonProperty("total")]
         public int Total { get; set; }
 
-        [JsonProperty("limit")]
+        [JsonProperty("limit", Required = Newtonsoft.Json.Required.AllowNull)]
         public int Limit { get; set; }
 
-        [JsonProperty("offset")]
+        [JsonProperty("offset", Required = Newtonsoft.Json.Required.AllowNull)]
         public int Offset { get; set; }
 
     }

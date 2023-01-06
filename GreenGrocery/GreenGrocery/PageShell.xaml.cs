@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,9 +22,10 @@ namespace GreenGrocery
         public async void InitPage()
         {
             HttpClient http = new HttpClient();
-            var resCategories = await http.GetStringAsync("https://grocery-store-api.onrender.com/products/categories");
+            var resCategories = await http.GetStringAsync("https://python-ecommerce-api.onrender.com/products/count_products_by_categories");
 
-            List<Category> categories = JsonConvert.DeserializeObject<List<Category>>(resCategories);
+            var resCategoriesData = JsonConvert.DeserializeObject<Response<List<Category>>>(resCategories);
+            List<Category> categories = resCategoriesData.Data;
 
             User user = db.GetUserLoggedIn();
 
@@ -51,7 +53,7 @@ namespace GreenGrocery
             this.Items.Add(flyoutItemProducts);
 
             categories.ForEach(category => {
-                FlyoutItem flyoutItem = new FlyoutItem { Title = category.Name };
+                FlyoutItem flyoutItem = new FlyoutItem { Title = $"{category.Name} ({category.Total})" };
                 flyoutItem.Items.Add(new ShellContent { Content = new ProductsList(null, category) });
                 this.Items.Add(flyoutItem);
             });

@@ -42,7 +42,7 @@ namespace GreenGrocery
 
             var res = await http.GetStringAsync(url);
 
-            var data = JsonConvert.DeserializeObject<Response>(res);
+            var data = JsonConvert.DeserializeObject<Response<ResponseData>>(res);
             ResponseData newData = data.Data;
             List<Product> newProducts = newData.Data;
             products = newProducts;
