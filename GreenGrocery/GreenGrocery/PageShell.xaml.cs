@@ -53,9 +53,11 @@ namespace GreenGrocery
             this.Items.Add(flyoutItemProducts);
 
             categories.ForEach(category => {
-                FlyoutItem flyoutItem = new FlyoutItem { Title = $"{category.Name} ({category.Total})" };
-                flyoutItem.Items.Add(new ShellContent { Content = new ProductsList(null, category) });
-                this.Items.Add(flyoutItem);
+                if (category.Kind != 0) {
+                    FlyoutItem flyoutItem = new FlyoutItem { Title = $"{category.Name} ({category.Total})" };
+                    flyoutItem.Items.Add(new ShellContent { Content = new ProductsList(null, category) });
+                    this.Items.Add(flyoutItem);
+                }
             });
         }
 

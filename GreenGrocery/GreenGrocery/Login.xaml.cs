@@ -41,7 +41,7 @@ namespace GreenGrocery
             //Send json
             StringContent content = new StringContent(endJson, Encoding.UTF8, "application/json");
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-            var res = await http.PostAsync("https://grocery-store-api.onrender.com/login", content);
+            var res = await http.PostAsync("https://python-ecommerce-api.onrender.com/login", content);
 
             //Read response as string
             var data = await res.Content.ReadAsStringAsync();

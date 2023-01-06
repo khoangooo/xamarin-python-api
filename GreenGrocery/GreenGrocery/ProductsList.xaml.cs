@@ -24,10 +24,10 @@ namespace GreenGrocery
         public async void GetProductsList(string keyword = "", Category category = null)
         {
             HttpClient http = new HttpClient();
-            string url = "https://grocery-store-api.onrender.com/products";
+            string url = "https://python-ecommerce-api.onrender.com/products";
 
             if (!string.IsNullOrEmpty(keyword)) {
-                url += $"?search={keyword}&"; 
+                url += $"?search={keyword}&";
             }
 
             if (category != null)
@@ -42,9 +42,8 @@ namespace GreenGrocery
 
             var res = await http.GetStringAsync(url);
 
-            var data = JsonConvert.DeserializeObject<Response<ResponseData>>(res);
-            ResponseData newData = data.Data;
-            List<Product> newProducts = newData.Data;
+            var data = JsonConvert.DeserializeObject<ResponseData>(res);
+            List<Product> newProducts = data.Data;
             products = newProducts;
 
             products.ForEach(p =>

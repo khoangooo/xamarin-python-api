@@ -27,22 +27,9 @@ namespace GreenGrocery
         public async void GetProductDetail(int productId)
         {
             HttpClient http = new HttpClient();
-            var resProduct = await http.GetStringAsync("https://grocery-store-api.onrender.com/products/" + productId.ToString());
+            var resProduct = await http.GetStringAsync("https://python-ecommerce-api.onrender.com/products/" + productId.ToString());
             if (resProduct == null) return;
-
-            var resCategories = await http.GetStringAsync("https://grocery-store-api.onrender.com/products/categories");
-
-            Product product = JsonConvert.DeserializeObject<Product>(resProduct);
-
-            List<Category> categories = JsonConvert.DeserializeObject<List<Category>>(resCategories);
-            
-            foreach (Category category in categories)
-            {
-                if (product.Kind == category.Kind)
-                {
-                    product.Category = category.Name;
-                }
-            }
+            Product product = JsonConvert.DeserializeObject<Response<Product>>(resProduct).Data;
             
             BindProduct(product);
             loading.IsRunning = false;
