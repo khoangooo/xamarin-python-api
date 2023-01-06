@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenGrocery.ProductsList">
+    <NavigationPage.TitleView>
+        <Label 
+            Text="Products" 
+            HeightRequest="50"
+            WidthRequest="300"
+            FontAttributes="Bold"
+            FontSize="18"
+            VerticalTextAlignment="Center"
+            TextColor="#FFFFFF"
+        />
+    </NavigationPage.TitleView>
+    <AbsoluteLayout>
+        <ActivityIndicator IsRunning="true" x:Name="loading" IsVisible="true"/>
+        <ScrollView x:Name="productsList" IsVisible="false" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <CollectionView x:Name="productsListDisplay" 
+                ItemsLayout="VerticalGrid, 2">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" x:Name="productSelected">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame
+                                BorderColor="#e5e5e5"
+                                CornerRadius="20"
+                                Padding="10"
+                             >
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnShowProductDetail" CommandParameter="{Binding .}" NumberOfTapsRequired="1"/>
+                                </Frame.GestureRecognizers>
+                                <StackLayout>
+                                    <Frame 
+                                        CornerRadius="20" 
+                                        Padding="0"
+                                        IsClippedToBounds="True"
+                                    >
+                                        <Image Source="{Binding Image}"
+                                            Aspect="AspectFill"
+                                            MinimumHeightRequest="40"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" 
+                                        />
+                                    </Frame>
+                                    <Label 
+                                        Text="{Binding Name}"
+                                        FontAttributes="Bold"
+                                        LineBreakMode="TailTruncation" 
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#000000"
+                                        FontSize="20"
+                                    />
+                                    <Grid Padding="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*" />
+                                            <ColumnDefinition Width="2.5*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="0"
+                                            Text="{Binding Path=Price, StringFormat='{}{0:C0}.00'}"
+                                            FontAttributes="Bold"
+                                            LineBreakMode="TailTruncation" 
+                                            TextColor="#000000"
+                                            VerticalTextAlignment="Center"
+                                            FontSize="16"
+                                        />
+                                        <Button 
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Text="+" 
+                                            BackgroundColor="#144dde" 
+                                            TextColor="#FFFFFF" 
+                                            CornerRadius="20"
+                                            FontSize="22"
+                                            Clicked="AddToCartClicked"
+                                        />
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Frame 
+            AbsoluteLayout.LayoutBounds="0,0.005,390,50"
+            AbsoluteLayout.LayoutFlags="PositionProportional"  
+            BorderColor="Gray"
+            BackgroundColor="White"
+            CornerRadius="10"
+            Padding="20,0,20,0"
+        >
+            <StackLayout>
+                <Entry x:Name="searchKeyword" Completed="OnSearchProduct"/>
+            </StackLayout>
+        </Frame>
+        <Frame 
+            x:Name="CartBtn"
+            AbsoluteLayout.LayoutBounds="0.95,.95,70,70"
+            AbsoluteLayout.LayoutFlags="PositionProportional" 
+            HeightRequest="70" WidthRequest="70" 
+            CornerRadius="35" 
+            BorderColor="Gray"
+            BackgroundColor="White"
+        >
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnShowCart" />
+            </Frame.GestureRecognizers>
+            <Image Source="floating_cart.png"/>
+        </Frame>
+    </AbsoluteLayout>
+</ContentPage>

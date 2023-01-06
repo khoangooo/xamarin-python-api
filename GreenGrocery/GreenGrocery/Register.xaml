@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenGrocery.Register">
+    <ContentPage.Content>
+        <ScrollView Margin="20, 40">
+            <StackLayout>
+                <Label Text="Register page"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="36"/>
+                <Image Source="home_1.jpg" Margin="20"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Username" VerticalOptions="Center" WidthRequest="100"/>
+                    <Entry 
+                        x:Name="username" 
+                        Placeholder="Enter your username" 
+                        HorizontalOptions="FillAndExpand" 
+                        ReturnType="Done"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Password" VerticalOptions="Center" WidthRequest="100"/>
+                    <Entry 
+                        x:Name="password" 
+                        IsPassword="True" 
+                        Placeholder="Enter your password" 
+                        HorizontalOptions="FillAndExpand" 
+                        ReturnType="Done"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Confirm Password" VerticalOptions="Center" WidthRequest="100"/>
+                    <Entry 
+                        x:Name="confirmPassword" 
+                        IsPassword="True" 
+                        Placeholder="Enter your confirm password" 
+                        HorizontalOptions="FillAndExpand" 
+                        ReturnType="Done"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Phone" VerticalOptions="Center" WidthRequest="100"/>
+                    <Entry 
+                        x:Name="phone" 
+                        Placeholder="Enter your phone number" 
+                        HorizontalOptions="FillAndExpand" 
+                        Keyboard="Numeric"
+                        ReturnType="Done"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="Email" VerticalOptions="Center" WidthRequest="100"/>
+                    <Entry 
+                        x:Name="email" 
+                        Placeholder="Enter your email" 
+                        HorizontalOptions="FillAndExpand" 
+                        ReturnType="Done"
+                        Keyboard="Email"/>
+                </StackLayout>
+                <Button x:Name="loginBtn" Text="Login" Clicked="LoginClicked" />
+                <Button x:Name="registerBtn" Text="Register" Clicked="RegisterClicked"/>
+            </StackLayout>
+        </ScrollView>
+        </ContentPage.Content>
+</ContentPage>

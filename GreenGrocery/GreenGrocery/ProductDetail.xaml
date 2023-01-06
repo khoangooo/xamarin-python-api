@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenGrocery.ProductDetail"
+             Title="{Binding Name}"
+             >
+    <ContentPage.Content >
+        <StackLayout Padding="5, 25">
+            <ActivityIndicator IsRunning="true" x:Name="loading" IsVisible="true"/>
+            <StackLayout x:Name="productDetail" IsVisible="false">
+                <Label x:Name="name" Text="{Binding Name}" Font="Bold,Large" HorizontalOptions="Center" />
+                <Image Source="{Binding Image}" WidthRequest="200" HeightRequest="200" />
+                <StackLayout Padding="50, 10">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Price:" Font="Bold,Medium" HorizontalOptions="FillAndExpand" />
+                        <Label Text="{Binding Path=Price, StringFormat='{}{0:C0}.00'}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Discount:" Font="Bold,Medium" HorizontalOptions="FillAndExpand" />
+                        <Label Text="{Binding Discount}"  />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Font="Bold,Medium" Text="Star:" HorizontalOptions="FillAndExpand" />
+                        <Label Text="{Binding Star}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Category:" HorizontalOptions="FillAndExpand" Font="Bold,Medium" />
+                        <Label Text="{Binding Category}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Font="Bold,Medium" Text="Description:" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding Description}"  HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

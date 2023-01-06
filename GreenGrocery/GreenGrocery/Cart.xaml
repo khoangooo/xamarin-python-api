@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenGrocery.Cart">
+    <StackLayout>
+        <StackLayout>
+            <ListView Margin="20,20,20,20" x:Name="cart">
+                <ListView.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label FontAttributes="Bold"  Text="Image" Grid.Row="0" Grid.Column="0" />
+                        <Label FontAttributes="Bold"  Text="Name"  Grid.Row="0" Grid.Column="1"/>
+                        <Label  
+                            FontAttributes="Bold" 
+                            Text="Quantity"
+                            Grid.Row="0"
+                            Grid.Column="3"
+                        />
+                        <Label 
+                            FontAttributes="Bold" 
+                            Text="Total" 
+                            Grid.Column="4" 
+                            Grid.Row="0"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center" 
+                        />
+                        <Label FontAttributes="Bold" Text="Remove" Grid.Column="5" Grid.Row="0" Grid.RowSpan="2"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Image}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"/>
+                                <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" />
+                                <Label Text="{Binding Path=Price, StringFormat='{}{0:C0}.00'}"  Grid.Column="1" Grid.Row="1"/>
+                                <Entry  
+                                    x:Name="quantityInput"
+                                    Text="{Binding Quantity}"
+                                    Grid.RowSpan="2" 
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    Keyboard="Numeric" 
+                                    Completed="OnRecalculatePrice"
+                                    HorizontalTextAlignment="Center"
+                                    HorizontalOptions="FillAndExpand"
+                                    FontSize="14"
+                                />
+                                <Label 
+                                    Text="{Binding Path=PriceMultiplyQuantity, StringFormat='{}{0:C0}.00'}"
+                                    Grid.RowSpan="2"
+                                    FontAttributes="Bold"  
+                                    Grid.Column="4" 
+                                    Grid.Row="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Center" 
+                                />
+                                <Button Text="X" x:Name="btnRemove" Grid.Column="5" Grid.Row="0" Grid.RowSpan="2" Clicked="RemoveCartItem"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label 
+                            Text="Total"
+                            FontAttributes="Bold"  
+                            Grid.Column="0" 
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="EndAndExpand"
+                        />
+                        <Label  
+                            Text="{Binding TotalQuantity}" 
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="CenterAndExpand"
+                         />
+                        <Label  
+                            Text="{Binding Path=TotalPrice, StringFormat='{}{0:C0}.00'}"
+                            Grid.Row="0"
+                            Grid.Column="3"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="StartAndExpand"
+                        />          
+                    </Grid>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+        <StackLayout>
+            <Entry x:Name="customerName" Placeholder="Input your fullname" />
+        </StackLayout>
+        <StackLayout>
+            <Entry x:Name="customerAddress" Placeholder="Input your address" />
+        </StackLayout>
+        <StackLayout>
+            <Button Text="Checkout" Clicked="CheckoutCart"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

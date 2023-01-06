@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GreenGrocery.LoginSuccess">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#E1E7EA">
+            <Grid Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <Frame Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
+                   Padding="0"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="Center"
+                   CornerRadius="150"
+                   IsClippedToBounds="True"
+                   HeightRequest="300"
+                   WidthRequest="300"
+                   BackgroundColor="SaddleBrown">
+                    <Image Source="avatar.jpg"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand" />
+                </Frame>
+            </Grid>
+            <StackLayout>
+                <Label TextColor="#EF89B5" Text="{Binding Path=Username, StringFormat='Hi, {0}'}" FontSize="40" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout>
+                <Label TextColor="#EF89B5" Text="{Binding Path=Email}" FontSize="40" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout>
+                <Label TextColor="#EF89B5" Text="{Binding Path=Phone}" FontSize="40" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+            <StackLayout Margin="20">
+                <Button Text="Logout" TextColor="#EF89B5" Clicked="LogoutClicked" WidthRequest="150" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
