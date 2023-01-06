@@ -70,7 +70,7 @@ namespace GreenGrocery
             var signupData = JsonConvert.DeserializeObject<ResponseSignup>(data);
             string message = signupData.Message;
 
-            if (signupData.Status != 200)
+            if (!signupData.Status)
             {
                 await DisplayAlert("Error", message, "OK");
             }

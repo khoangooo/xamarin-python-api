@@ -47,7 +47,7 @@ namespace GreenGrocery
             var data = await res.Content.ReadAsStringAsync();
             
             //Deserialize string to json
-            User user = JsonConvert.DeserializeObject<User>(data);
+            User user = JsonConvert.DeserializeObject<Response<User>>(data).Data;
             if (user != null)
             {
                 bool isLogin = db.UserLogin(user);

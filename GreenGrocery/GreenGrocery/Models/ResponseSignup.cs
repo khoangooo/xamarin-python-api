@@ -7,7 +7,7 @@ namespace GreenGrocery.Models
     public class ResponseSignup
     {
         [JsonProperty("status")]
-        public int Status { get; set; }
+        public bool Status { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
